@@ -2,7 +2,7 @@
   <div>
     <h1>Hogeカウンター</h1>
     <div>{{ count }}</div>
-    <button v-on:click="handleClick">+</button>
+    <button v-on:click="increment">+</button>
     <input v-model="message" />
     <div>{{message}}</div>
   </div>
@@ -18,8 +18,8 @@ export default {
     };
   },
   methods: {
-    handleClick: () => {
-      alert(this.count);
+    increment() {
+      this.count += 1; 
     },
   },
 };
