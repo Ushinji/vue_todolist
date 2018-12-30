@@ -3,7 +3,10 @@
     <h1>ToDoList</h1>
     <input v-model="inputText"/>
     <button v-on:click="addItem">追加する</button>
-    <li v-for="item in listItems" v-bind:key="item.id">{{ item.text }}</li>
+    <li v-for="item in listItems" v-bind:key="item.id">
+      <input type="checkbox" v-on:click="updateItem(item.id, item.text, !item.isDone)">
+      {{ item.text }} {{item.isDone}}
+    </li>
   </div>
 </template>
 
@@ -22,7 +25,7 @@ export default {
       if(!this.inputText) {
         alert('ToDoの内容を入力してください。');
         return;
-        }
+      }
       this.listItems.push({
         id: this.currentId,
         text: this.inputText,
@@ -31,9 +34,19 @@ export default {
       this.currentId += 1;
       this.inputText = '';
     },
+    updateItem(id, text, isDone) {
+      const index = this.listItems.findIndex(
+        item => item.id === id
+      );
+      if(index === -1) {
+        throw new Error('Item Not found');
+      };
+      this.listItems.splice(index, 1, {
+        id,
+        text,
+        isDone,
+      });
+    },
   }
 }
 </script>
-
-
-
