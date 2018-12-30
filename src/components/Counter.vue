@@ -3,6 +3,8 @@
     <h1>Hogeカウンター</h1>
     <div>{{ count }}</div>
     <button v-on:click="handleClick">+</button>
+    <input v-model="message" />
+    <div>{{message}}</div>
   </div>
 </template>
 
@@ -12,11 +14,12 @@ export default {
   data() {
     return {
       count: 0,
+      message: '',
     };
   },
   methods: {
     handleClick: () => {
-      alert("クリックが押されました!");
+      alert(this.count);
     },
   },
 };
