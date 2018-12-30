@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div class="todo-list">
     <h1>ToDoList</h1>
     <input v-model="inputText"/>
     <button v-on:click="addItem">追加する</button>
-    <li v-for="item in listItems" v-bind:key="item.id">
-      <input type="checkbox" v-on:click="updateItem(item.id, item.text, !item.isDone)">
-      {{ item.text }} {{item.isDone}}
-    </li>
+    <template v-for="item in listItems">
+      <li v-bind:key="item.id" class="todo-list--item" v-bind:class="[item.isDone ? 'todo-list--item--is-done' : '']">
+        <input type="checkbox" v-on:click="updateItem(item.id, item.text, !item.isDone)">
+        {{ item.text }}
+      </li>
+    </template>
   </div>
 </template>
 
@@ -50,3 +52,18 @@ export default {
   }
 }
 </script>
+
+<style>
+.todo-list {
+  padding: 64px 128px;
+}
+
+.todo-list--item {
+  list-style: none;
+  font-size: 20px;
+}
+
+.todo-list--item--is-done {
+  text-decoration: line-through;
+}
+</style>
