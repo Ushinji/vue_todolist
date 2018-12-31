@@ -2,13 +2,13 @@
   <div class="todo-list">
     <h1>ToDoList</h1>
     <InputText
-      v-model="inputText"
+      v-model="newTodoText"
       placeholder="(例) 30分ランニングを行う"
       v-on:keydown.enter="addItem"
     />
-    <ul v-if="listItems.length">
+    <ul v-if="todos.length">
       <ToDoListItem
-        v-for="todo in listItems"
+        v-for="todo in todos"
         v-bind:key="todo.id"
         v-bind:todo="todo"
         v-on:click="updateItem"
@@ -31,32 +31,32 @@ export default {
   data() {
     return {
       currentId: 1,
-      inputText: '',
-      listItems: [],
+      newTodoText: '',
+      todos: [],
     };
   },
   methods: {
     addItem() {
-      if (!this.inputText) {
+      if (!this.newTodoText) {
         alert('ToDoの内容を入力してください。'); // eslint-disable-line no-alert
         return;
       }
-      this.listItems.push({
+      this.todos.push({
         id: this.currentId,
-        text: this.inputText,
+        text: this.newTodoText,
         isDone: false,
       });
       this.currentId += 1;
-      this.inputText = '';
+      this.newTodoText = '';
     },
     updateItem(id, text, isDone) {
-      const index = this.listItems.findIndex(
+      const index = this.todos.findIndex(
         item => item.id === id,
       );
       if (index === -1) {
         throw new Error('Item Not found');
       }
-      this.listItems.splice(index, 1, {
+      this.todos.splice(index, 1, {
         id,
         text,
         isDone,
