@@ -1,8 +1,15 @@
 <template>
-  <div>
-    <input type="checkbox" v-on:click="$emit('click', todo.id, todo.text, !todo.isDone)">
+  <li
+    v-bind:class="[
+      { 'todo-list--item--is-done': todo.isDone },
+        'todo-list--item'
+    ]">
+    <input
+      type="checkbox"
+      v-on:click="$emit('click', todo.id, todo.text, !todo.isDone)"
+    />
     {{ todo.text }}
-  </div>
+  </li>
 </template>
 
 <script>
@@ -17,6 +24,13 @@ export default {
 </script>
 
 <style>
+.todo-list--item {
+  list-style: none;
+  font-size: 20px;
+}
 
+.todo-list--item--is-done {
+text-decoration: line-through;
+}
 </style>
 

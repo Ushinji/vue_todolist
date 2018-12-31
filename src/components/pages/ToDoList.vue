@@ -6,21 +6,12 @@
       placeholder="(例) 30分ランニングを行う"
       v-on:keydown.enter="addItem"
     />
-    <template v-for="todo in listItems">
-      <li
-        v-bind:key="todo.id"
-        v-bind:class="[
-        {
-          'todo-list--item--is-done': todo.isDone
-        },
-         'todo-list--item']"
-      >
-        <ToDoListItem
-          v-bind:todo="todo"
-          v-on:click="updateItem"
-        />
-      </li>
-    </template>
+    <ToDoListItem
+      v-for="todo in listItems"
+      v-bind:key="todo.id"
+      v-bind:todo="todo"
+      v-on:click="updateItem"
+    />
   </div>
 </template>
 
@@ -75,14 +66,5 @@ export default {
 <style>
 .todo-list {
   padding: 64px 128px;
-}
-
-.todo-list--item {
-  list-style: none;
-  font-size: 20px;
-}
-
-.todo-list--item--is-done {
-  text-decoration: line-through;
 }
 </style>
