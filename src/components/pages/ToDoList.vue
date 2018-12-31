@@ -6,17 +6,19 @@
       placeholder="(例) 30分ランニングを行う"
       v-on:keydown.enter="addItem"
     />
-    <template v-for="item in listItems">
+    <template v-for="todo in listItems">
       <li
-        v-bind:key="item.id"
+        v-bind:key="todo.id"
         v-bind:class="[
         {
-          'todo-list--item--is-done': item.isDone
+          'todo-list--item--is-done': todo.isDone
         },
          'todo-list--item']"
       >
-        <input type="checkbox" v-on:click="updateItem(item.id, item.text, !item.isDone)">
-        {{ item.text }}
+        <ToDoListItem
+          v-bind:todo="todo"
+          v-on:click="updateItem"
+        />
       </li>
     </template>
   </div>
@@ -24,11 +26,13 @@
 
 <script>
 import InputText from '../atoms/InputText';
+import ToDoListItem from '../molecules/ToDoListItem';
 
 export default {
   name: 'ToDoList',
   components: {
     InputText,
+    ToDoListItem,
   },
   data() {
     return {
