@@ -1,16 +1,16 @@
 <template>
   <div class="todo-list">
     <h1>ToDoList</h1>
-    <InputText 
+    <InputText
       v-model="inputText"
       placeholder="(例) 30分ランニングを行う"
       @keydown.enter="addItem"
     />
     <template v-for="item in listItems">
-      <li 
-        v-bind:key="item.id" 
+      <li
+        v-bind:key="item.id"
         v-bind:class="[
-        { 
+        {
           'todo-list--item--is-done': item.isDone
         },
          'todo-list--item']"
@@ -28,8 +28,8 @@ import InputText from '../atoms/InputText';
 export default {
   name: 'ToDoList',
   components: {
-		InputText
-	},
+    InputText,
+  },
   data() {
     return {
       currentId: 1,
@@ -39,8 +39,8 @@ export default {
   },
   methods: {
     addItem() {
-      if(!this.inputText) {
-        alert('ToDoの内容を入力してください。');
+      if (!this.inputText) {
+        alert('ToDoの内容を入力してください。'); // eslint-disable-line no-alert
         return;
       }
       this.listItems.push({
@@ -53,7 +53,7 @@ export default {
     },
     updateItem(id, text, isDone) {
       const index = this.listItems.findIndex(
-        item => item.id === id
+        item => item.id === id,
       );
       if (index === -1) {
         throw new Error('Item Not found');
