@@ -4,7 +4,7 @@
     <input v-model="inputText"/>
     <button v-on:click="addItem">追加する</button>
     <template v-for="item in listItems">
-      <li v-bind:key="item.id" class="todo-list--item" v-bind:class="[item.isDone ? 'todo-list--item--is-done' : '']">
+      <li v-bind:key="item.id" v-bind:class="[{ 'todo-list--item--is-done': item.isDone }, 'todo-list--item']">
         <input type="checkbox" v-on:click="updateItem(item.id, item.text, !item.isDone)">
         {{ item.text }}
       </li>
