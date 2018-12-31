@@ -1,10 +1,20 @@
 <template>
   <div class="todo-list">
     <h1>ToDoList</h1>
-    <input v-model="inputText"/>
-    <button v-on:click="addItem">追加する</button>
+    <InputText 
+      v-model="inputText"
+      placeholder="(例) 30分ランニングを行う"
+      @keydown.enter="addItem"
+    />
     <template v-for="item in listItems">
-      <li v-bind:key="item.id" v-bind:class="[{ 'todo-list--item--is-done': item.isDone }, 'todo-list--item']">
+      <li 
+        v-bind:key="item.id" 
+        v-bind:class="[
+        { 
+          'todo-list--item--is-done': item.isDone
+        },
+         'todo-list--item']"
+      >
         <input type="checkbox" v-on:click="updateItem(item.id, item.text, !item.isDone)">
         {{ item.text }}
       </li>
@@ -13,8 +23,13 @@
 </template>
 
 <script>
+import InputText from '../atoms/InputText';
+
 export default {
   name: 'ToDoList',
+  components: {
+		InputText
+	},
   data() {
     return {
       currentId: 1,
@@ -40,17 +55,17 @@ export default {
       const index = this.listItems.findIndex(
         item => item.id === id
       );
-      if(index === -1) {
+      if (index === -1) {
         throw new Error('Item Not found');
-      };
+      }
       this.listItems.splice(index, 1, {
         id,
         text,
         isDone,
       });
     },
-  }
-}
+  },
+};
 </script>
 
 <style>
