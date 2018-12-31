@@ -6,12 +6,15 @@
       placeholder="(例) 30分ランニングを行う"
       v-on:keydown.enter="addItem"
     />
-    <ToDoListItem
-      v-for="todo in listItems"
-      v-bind:key="todo.id"
-      v-bind:todo="todo"
-      v-on:click="updateItem"
-    />
+    <ul v-if="listItems.length">
+      <ToDoListItem
+        v-for="todo in listItems"
+        v-bind:key="todo.id"
+        v-bind:todo="todo"
+        v-on:click="updateItem"
+      />
+    </ul>
+    <p v-else>ToDoはありません！</p>
   </div>
 </template>
 
