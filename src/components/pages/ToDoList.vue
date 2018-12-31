@@ -4,7 +4,7 @@
     <InputText
       v-model="inputText"
       placeholder="(例) 30分ランニングを行う"
-      @keydown.enter="addItem"
+      v-on:keydown.enter="addItem"
     />
     <template v-for="item in listItems">
       <li
