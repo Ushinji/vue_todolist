@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <ToDoList />
+    <router-view />
   </div>
 </template>
 
 <script>
-import ToDoList from './components/pages/ToDoList';
-
 export default {
   name: 'App',
-  components: {
-    ToDoList,
-  },
 };
 </script>
 
