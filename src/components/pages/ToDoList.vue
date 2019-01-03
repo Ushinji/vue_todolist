@@ -30,9 +30,25 @@ export default {
   },
   data() {
     return {
-      currentId: 1,
+      currentId: 4,
       newTodoText: '',
-      todos: [],
+      todos: [
+        {
+          id: 1,
+          text: 'ランニングを30分行う',
+          isDone: false,
+        },
+        {
+          id: 2,
+          text: '晩御飯の買い出しに行く',
+          isDone: false,
+        },
+        {
+          id: 3,
+          text: '役所に住民票を届けに行く',
+          isDone: false,
+        },
+      ],
     };
   },
   methods: {
