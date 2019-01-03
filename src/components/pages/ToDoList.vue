@@ -21,7 +21,7 @@
 
 <script>
 import InputText from '../atoms/InputText';
-import ToDoListItem from '../molecules/ToDoListItem';
+import ToDoListItem from '../organisms/ToDoListItem';
 
 export default {
   name: 'ToDoList',

@@ -9,6 +9,7 @@
       v-on:click="$emit('click', todo.id, todo.text, !todo.isDone)"
     />
     {{ todo.text }}
+    <router-link :to="`/todos/${ todo.id }`">カウンター</router-link>
   </li>
 </template>
 
