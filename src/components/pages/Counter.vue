@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <h1>Hogeカウンター</h1>
+  <div class="counter">
+    <router-link to="/">トップページへ戻る</router-link>
+    <h1>カウンター</h1>
     <div>{{ count }}</div>
     <button v-on:click="increment">+</button>
-    <input v-model="message" />
-    <div>{{message}}</div>
   </div>
 </template>
 
@@ -24,3 +23,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.counter {
+  padding: 24px;
+}
+
+h1 {
+  font-weight: normal;
+};
+</style>
+

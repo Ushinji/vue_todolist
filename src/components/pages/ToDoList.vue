@@ -1,5 +1,6 @@
 <template>
   <div class="todo-list">
+    <router-link to="/">トップページへ戻る</router-link>
     <h1>ToDoList</h1>
     <InputText
       v-model="newTodoText"
@@ -84,6 +85,15 @@ export default {
 
 <style>
 .todo-list {
-  padding: 64px 128px;
+  padding: 24px;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 </style>

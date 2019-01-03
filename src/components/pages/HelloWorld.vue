@@ -9,6 +9,7 @@
         <router-link to="/counter">カウンター</router-link>
       </li>
     </ul>
+    <router-view />
   </div>
 </template>
 
@@ -24,7 +25,11 @@ export default {
 </script>
 
 <style scoped>
-h1, h2 {
+.hello {
+  padding: 24px;
+}
+
+h1 {
   font-weight: normal;
 }
 ul {
