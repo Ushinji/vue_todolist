@@ -1,1 +1,2 @@
-export const INCREMENT = 'increment';
+const INCREMENT = 'increment';
+export default INCREMENT;

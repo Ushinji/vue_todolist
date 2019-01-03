@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { INCREMENT } from '../../stores/mutationTypes';
+import INCREMENT from '../../stores/mutationTypes';
 
 export default {
   name: 'Counter',
