@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import ADD_TODO from '../../stores/modules/todos/types';
 import InputText from '../atoms/InputText';
 import ToDoListItem from '../organisms/ToDoListItem';
 
@@ -47,14 +46,18 @@ export default {
         alert('ToDoの内容を入力してください。'); // eslint-disable-line no-alert
         return;
       }
-      this.$store.dispatch(ADD_TODO, {
+      this.$store.dispatch('todos/add', {
         id: this.$store.state.todos.currentId,
         text,
       });
       this.newTodoText = '';
     },
     updateItem(id, text, isDone) {
-      console.log(id, text, isDone);
+      this.$store.dispatch('todos/update', {
+        id,
+        text,
+        isDone,
+      });
     },
   },
 };
