@@ -5,7 +5,7 @@
     <InputText
       v-model="newTodoText"
       placeholder="(例) 30分ランニングを行う"
-      v-on:keydown.enter="addItem"
+      v-on:keydown.enter="addTodo"
     />
     <ul v-if="todos.length">
       <ToDoListItem
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import ADD_TODO from '../../stores/modules/todos/types';
 import InputText from '../atoms/InputText';
 import ToDoListItem from '../organisms/ToDoListItem';
 
@@ -33,38 +34,27 @@ export default {
     return {
       newTodoText: '',
     };
-        },
+  },
   computed: {
     todos() {
       return this.$store.state.todos.todos;
-        },
+    },
   },
   methods: {
-    addItem() {
-      if (!this.newTodoText) {
+    addTodo() {
+      const text = this.newTodoText.trim();
+      if (!text) {
         alert('ToDoの内容を入力してください。'); // eslint-disable-line no-alert
         return;
       }
-      this.todos.push({
-        id: this.currentId,
-        text: this.newTodoText,
-        isDone: false,
+      this.$store.dispatch(ADD_TODO, {
+        id: this.$store.state.todos.currentId,
+        text,
       });
-      this.currentId += 1;
       this.newTodoText = '';
     },
     updateItem(id, text, isDone) {
-      const index = this.todos.findIndex(
-        item => item.id === id,
-      );
-      if (index === -1) {
-        throw new Error('Item Not found');
-      }
-      this.todos.splice(index, 1, {
-        id,
-        text,
-        isDone,
-      });
+      console.log(id, text, isDone);
     },
   },
 };

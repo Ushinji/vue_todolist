@@ -1,3 +1,6 @@
+import actions from './actions';
+import mutations from './mutations';
+
 const state = {
   currentId: 4,
   todos: [
@@ -19,30 +22,9 @@ const state = {
   ],
 };
 
-const actions = {
-  addToDo({ commit }, id, text) {
-    commit('addTodo', {
-      id,
-      text,
-      isDone: false,
-    });
-  },
-};
-
-
-const mutations = {
-  add(state, todo) {
-    state.todos.push(todo);
-    state.currentId += 1;
-  },
-};
-
-const getters = {};
-
 export default {
   namespaced: true,
   state,
   actions,
   mutations,
-  getters,
 };
