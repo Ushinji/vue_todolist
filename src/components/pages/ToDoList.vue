@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import InputText from '../atoms/InputText';
 import ToDoListItem from '../organisms/ToDoListItem';
 
@@ -40,13 +41,16 @@ export default {
     },
   },
   methods: {
+    ...mapActions('todos', [
+      'add',
+    ]),
     addTodo() {
       const text = this.newTodoText.trim();
       if (!text) {
         alert('ToDoの内容を入力してください。'); // eslint-disable-line no-alert
         return;
       }
-      this.$store.dispatch('todos/add', {
+      this.add({
         id: this.$store.state.todos.currentId,
         text,
       });
