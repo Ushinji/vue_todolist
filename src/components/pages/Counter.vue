@@ -2,19 +2,19 @@
   <div class="counter">
     <router-link to="/">トップページへ戻る</router-link>
     <h1>カウンター</h1>
-    <div>{{ $store.getters.count }}</div>
+    <div>{{ $store.state.count.count }}</div>
     <button v-on:click="increment">+</button>
   </div>
 </template>
 
 <script>
-import INCREMENT from '../../stores/mutationTypes';
+import COUNT_INCREMENT from '../../stores/mutationTypes';
 
 export default {
   name: 'Counter',
   methods: {
     increment() {
-      this.$store.commit(INCREMENT);
+      this.$store.commit(COUNT_INCREMENT);
     },
   },
 };

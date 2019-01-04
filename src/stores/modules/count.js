@@ -8,11 +8,7 @@ const mutations = {
   },
 };
 
-const getters = {
-  count(state) {
-    return state.count;
-  },
-};
+const getters = {};
 
 export default {
   namespaced: true,
