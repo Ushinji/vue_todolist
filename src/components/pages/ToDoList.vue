@@ -12,7 +12,7 @@
         v-for="todo in todos"
         v-bind:key="todo.id"
         v-bind:todo="todo"
-        v-on:click="updateItem"
+        v-on:click="updateToDo"
       />
     </ul>
     <p v-else>ToDoはありません！</p>
@@ -43,6 +43,7 @@ export default {
   methods: {
     ...mapActions('todos', [
       'add',
+      'update',
     ]),
     addTodo() {
       const text = this.newTodoText.trim();
@@ -56,8 +57,8 @@ export default {
       });
       this.newTodoText = '';
     },
-    updateItem(id, text, isDone) {
-      this.$store.dispatch('todos/update', {
+    updateToDo(id, text, isDone) {
+      this.update({
         id,
         text,
         isDone,
