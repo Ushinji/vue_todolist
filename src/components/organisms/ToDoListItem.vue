@@ -1,15 +1,14 @@
 <template>
   <li
     v-bind:class="[
-      { 'todo-list--item--is-done': todo.isDone },
-        'todo-list--item'
+      { 'todo-list--item--is-done': todo.isDone }, 'todo-list--item'
     ]">
     <input
       type="checkbox"
       v-on:click="$emit('click', todo.id, todo.text, !todo.isDone)"
     />
     {{ todo.text }}
-    <router-link :to="`/todos/${ todo.id }`">カウンター</router-link>
+    <router-link :to="`/todos/${ todo.id }`">編集する</router-link>
   </li>
 </template>
 
@@ -31,7 +30,7 @@ export default {
 }
 
 .todo-list--item--is-done {
-text-decoration: line-through;
+  text-decoration: line-through;
 }
 </style>
 

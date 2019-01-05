@@ -16,11 +16,11 @@ export default [
       {
         path: 'todos',
         component: ToDoList,
-        props: route => ({ id: Number(route.params.id) }),
       },
       {
         path: 'todos/:id',
         component: ToDoSetting,
+        props: route => ({ id: Number(route.params.id) }),
       },
       {
         path: 'counter',
